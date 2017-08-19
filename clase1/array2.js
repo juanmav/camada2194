@@ -7,11 +7,11 @@ let usuarios = [{
 }, {
     id: 3,
     name: 'juan'
-},
-    {
-        id: 4,
-        name: 'pedro'
-    }]
+},    {
+    id: 4,
+    name: 'pedro'
+}
+]
 
 let user = usuarios.find(function(u){
     return u.id == 3;
