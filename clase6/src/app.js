@@ -1,65 +1,44 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Leyenda from './componets/leyenda';
-import LeyendaSinEstado from './componets/leyendaSinEstado';
-import Blinker from './componets/blinker';
-import PostList from './componets/postlist';
-import { posts, users } from '../data/data';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import LifeCicle from './componets/LifeCicle';
+import Root from './layout/Root';
+import Header from './layout/Header';
+import Main from './layout/Main';
+import Sidebar from './layout/Sidebar';
+import About from './pages/About';
+import About2 from './pages/About2';
 
-import Register from './componets/Register';
 
 class App extends React.Component {
 
     constructor(){
         super();
-        this.state = {
-            sacalo : false
-        }
     }
 
     componentWillMount(){
-        setTimeout(()=> {
-            this.setState({sacalo: true})
-        }, 10000)
+
     }
 
     render(){
-
-        let leyendaData = {
-            text: 'Hola',
-            numero: 1,
-            id: 1
-        };
-
         return (
-            <div>
-                LeyendaSinEstado text={"Hola"} numero={1}/>
-                <br/>
-                <Leyenda text={"Chau"} numero={2}/>
-                <Leyenda {...leyendaData}/>
-                <br/>
-                <Leyenda numero={3} id={3}/>
-                <br/>
-                {this.state.sacalo ? null : <LifeCicle/>}
-                <br/>
-                <Register/>
-                <br/>
-                <Register user={
-                {
-                    name: 'pepito',
-                    lastname: 'rodriguez',
-                    dni: '546324',
-                    mail: 'pepe@asdasd',
-                    sexo: 'Hombre'
-                }
-                }
-                          props2 = {'asdasdasd'}
-                />
-                <br/>
-                <PostList posts={posts}/>
-            </div>
+            <Root>
+                <Header>
+                    Mi aplicacion con Router
+                </Header>
+                <Router>
+                    <div>
+                        <Sidebar>
+                            <li> <Link to="/about">About</Link> </li>
+                            <li> <Link to="/about2">About</Link> </li>
+                        </Sidebar>
+                        <Main>
+                            <Route path="/about" component={About}/>
+                            <Route path="/about2" component={About2}/>
+                        </Main>
+                    </div>
+                </Router>
+            </Root>
         )
     }
 
