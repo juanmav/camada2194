@@ -7,6 +7,11 @@ export default class User extends React.Component {
         super(props)
     }
 
+    handleBorrar = () => {
+        console.log('Llamo el borrar del listado');
+        this.props.borrarFn(this.props.id)
+    };
+
     render(){
         return (
             <div>
@@ -16,6 +21,7 @@ export default class User extends React.Component {
                 <p> {this.props.website} </p>
                 <hr/>
                 <Link to={'/users/edit/' + this.props.id }>Editar</Link>
+                <button onClick={this.handleBorrar}>Eliminar</button>
                 <hr/>
             </div>
         )

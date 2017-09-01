@@ -17,6 +17,12 @@ export default class UserList extends React.Component {
             .then(users => this.setState({users}))
     }
 
+    borrarUser = (id) => {
+        let updatedList = this.state.users.filter(u => u.id != id);
+        this.setState({users: updatedList});
+        console.log("LE aviso al servidor que quiero borrar este id:" + id);
+    };
+
     render(){
         return (
             <div>
@@ -24,7 +30,7 @@ export default class UserList extends React.Component {
                 {
                     this.state.users.map( (u,index) => {
                         return (
-                            <User key={index} {...u}/>
+                            <User key={index} {...u} borrarFn={this.borrarUser}/>
                         )
                     })
                 }
