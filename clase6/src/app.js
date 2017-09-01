@@ -8,6 +8,8 @@ import Main from './layout/Main';
 import Sidebar from './layout/Sidebar';
 import About from './pages/About';
 import About2 from './pages/About2';
+import UserList from './componets/User/Userlist';
+import UserForm from './componets/User/UserForm';
 
 
 class App extends React.Component {
@@ -29,12 +31,22 @@ class App extends React.Component {
                 <Router>
                     <div>
                         <Sidebar>
+                            <li> <Link to="/users">Users</Link> </li>
                             <li> <Link to="/about">About</Link> </li>
-                            <li> <Link to="/about2">About</Link> </li>
                         </Sidebar>
                         <Main>
                             <Route path="/about" component={About}/>
-                            <Route path="/about2" component={About2}/>
+                            <Route path="/users" exact={true} component={UserList}/>
+                            <Route path="/users/new" exact={true} component={UserForm}/>
+                            <Route
+                                path="/users/edit/:userId"
+                                exact={true}
+                                render={
+                                    ({match})=> {
+                                        console.log(match);
+                                        return <UserForm id={match.params.userId}/>
+                                    }
+                                } />
                         </Main>
                     </div>
                 </Router>
