@@ -1,0 +1,16 @@
+{
+  "name": "clase7bis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node myscript.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^1.1.7",
+    "leftpad": "0.0.1"
+  }
+}
