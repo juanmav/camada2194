@@ -1,6 +1,8 @@
 import React from 'react';
 import tweets from '../../data/tweets';
 import Tweet from './Tweet';
+import { Link } from 'react-router-dom';
+
 
 export default class TweetsList extends React.Component {
 
@@ -21,6 +23,7 @@ export default class TweetsList extends React.Component {
     render(){
         return (
             <div>
+                <Link to={'/tweet/new'}> Crear Nuevo Tweet! </Link>
                 {
                     this.state.tweets.length ?
                             this.state.tweets.map( (t, index) => {

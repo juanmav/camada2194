@@ -1,5 +1,6 @@
 import React from 'react';
 import tweets from '../../data/tweets';
+import {Link} from 'react-router-dom';
 
 export default class TweetDetail extends React.Component {
 
@@ -22,15 +23,20 @@ export default class TweetDetail extends React.Component {
     render(){
         return(
             <div>
+                <h1>
                 {this.state.tweet.message}
+                </h1>
+                <Link to={"/tweet/edit/" + this.props._id}> Editar</Link>
+                <p>
                 {
                     this.state.tweet.comments.map( (c,index)=> (
                             <div key={index}>
-                                {c.message}
+                                { (index+1) + '.'}{c.message}
                             </div>
                         )
                     )
                 }
+                </p>
             </div>
         );
     }
